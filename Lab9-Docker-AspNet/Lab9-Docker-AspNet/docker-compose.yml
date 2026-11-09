@@ -1,0 +1,7 @@
+services:
+  backend-app:
+    build: .
+    image: backend-app:latest
+    container_name: backend-container
+    ports:
+      - "8080:8080"
