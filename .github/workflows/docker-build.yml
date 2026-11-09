@@ -1,0 +1,22 @@
+
+name: Docker Build Test
+
+on:
+  push:
+    branches: ["main", "master"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        run: |
+          docker build -t test-app:latest ./Lab9-Docker-AspNet/Lab9-Docker-AspNet
+          echo "Образ собран!"
